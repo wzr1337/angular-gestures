@@ -32,6 +32,17 @@ module.exports = function(grunt) {
                 jshintrc : '.jshintrc'
             },
             all : [ 'Gruntfile.js', 'src/*.js' ]
+        },
+        compress: {
+            main: {
+                options: {
+                    archive: 'angular-gestures.zip'
+                },
+                files: [{flatten: true,
+                    src: ['dist/*'],
+                    dest: 'angular-gestures/',
+                    filter: 'isFile'}]
+            }
         }
     });
 
@@ -39,7 +50,8 @@ module.exports = function(grunt) {
         'clean:dist',
         'jshint',
         'concat',
-        'uglify'
+        'uglify',
+        'compress'
     ]);
 
     grunt.registerTask('default', [ 'build' ]);
