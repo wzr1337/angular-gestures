@@ -34,7 +34,7 @@ AngularJS directive that adds support for multi touch gestures to your app. Base
 * hmTouch : 'touch',
 * hmTransformStart : 'transformstart',
 * hmTransform : 'transform',
-* hmTransforEnd : 'transformend'
+* hmTransformEnd : 'transformend'
 
 ## Bower
 If you want to use angular-momentum-scroll with bower, add the following dependency to your component.json
