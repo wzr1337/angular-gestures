@@ -39,7 +39,7 @@ var HGESTURES = {
     hmTouch : 'touch',
     hmTransformStart : 'transformstart',
     hmTransform : 'transform',
-    hmTransforEnd : 'transformend'
+    hmTransformEnd : 'transformend'
 };
 
 var VERBOSE = true;
