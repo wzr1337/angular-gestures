@@ -43,6 +43,16 @@ module.exports = function(grunt) {
                     dest: 'angular-gestures/',
                     filter: 'isFile'}]
             }
+        },
+        copy: {
+            main: {
+                files: [
+                    {expand: true, src: ['./*.json'], dest: 'dist/',
+                      filter: 'isFile'}, //copy *.json
+                    {expand: true, src: ['./*.md'], dest: 'dist/',
+                        filter: 'isFile'}, // copy *.md
+                ]
+            }
         }
     });
 
@@ -51,6 +61,7 @@ module.exports = function(grunt) {
         'jshint',
         'concat',
         'uglify',
+        'copy',
         'compress'
     ]);
 
