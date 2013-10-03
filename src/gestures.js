@@ -49,20 +49,25 @@ angular.forEach(HGESTURES, function(eventName, directiveName) {
             directiveName,
             ['$parse', '$log', function($parse, $log) {
                 return function(scope, element, attr) {
+                    var hammertime, handler;
                     attr.$observe(directiveName, function(value) {
                         var fn = $parse(value);
                         var opts = $parse(attr[directiveName + 'Opts'])
                         (scope, {});
-                        new Hammer(element[0], opts).on(eventName,
-                                function(event) {
-                                    if (VERBOSE) {
-                                        $log.log('angular-gestures: %s',
-                                                eventName);
-                                    }
-                                    scope.$apply(function() {
-                                        fn(scope, { $event : event });
-                                    });
-                                });
+                        hammertime = new Hammer(element[0], opts);
+                        handler = function(event) {
+                            if (VERBOSE) {
+                                $log.log('angular-gestures: %s',
+                                        eventName);
+                            }
+                            scope.$apply(function() {
+                                fn(scope, { $event : event });
+                            });
+                        };
+                        hammertime.on(eventName, handler);
+                    });
+                    scope.$on('$destroy', function() {
+                        hammertime.off(eventName, handler);
                     });
                 };
             }]);

@@ -8,7 +8,7 @@ module.exports = function(grunt) {
         concat : {
             dist : {
                 files : {
-                    'dist/gestures.js' : [ 'components/hammerjs/dist/hammer.js',
+                    'dist/gestures.js' : [ 'bower_components/hammerjs/dist/hammer.js',
                             'src/gestures.js' ]
                 }
             }
