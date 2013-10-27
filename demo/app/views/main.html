@@ -1,0 +1,11 @@
+<div class="hero-unit">
+  <h1>Angular Gestures Demo</h1>
+  <p>Please tap, hold, drag, pinch, swipe or rotate the following container</p>
+  <div id="container" class="btn btn-large btn-primary disabled"
+    hm-tap="handleGesture($event)"
+    hm-hold="handleGesture($event)"
+    hm-swipe="handleGesture($event)"
+    hm-pinch="handleGesture($event)"
+    hm-drag="handleGesture($event)"
+    hm-rotate="handleGesture($event)">You can <b>{{ type }}</b> this container</div>
+</div>

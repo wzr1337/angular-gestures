@@ -1,0 +1,27 @@
+body {
+    background: #fafafa;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #333;
+}
+
+.hero-unit {
+    margin: 4rem auto 0 auto;
+    width: 90%;
+    font-size: 1.5rem;
+    font-weight: 200;
+    line-height: 2rem;
+    background-color: #eee;
+    border-radius: 6px;
+    padding: 4rem;
+}
+
+.hero-unit h1 {
+    font-size: 4rem;
+    line-height: 1;
+}
+
+.hero-unit #container {
+  width : 10rem;
+  height : 10rem;
+  line-height: 5rem;
+}
