@@ -33,22 +33,11 @@ module.exports = function(grunt) {
             },
             all : [ 'Gruntfile.js', 'src/*.js' ]
         },
-        compress: {
-            main: {
-                options: {
-                    archive: 'angular-gestures.zip'
-                },
-                files: [{flatten: true,
-                    src: ['dist/*'],
-                    dest: 'angular-gestures/',
-                    filter: 'isFile'}]
-            }
-        },
         copy: {
             main: {
                 files: [
-                    {expand: true, src: ['./*.json'], dest: 'dist/',
-                      filter: 'isFile'}, //copy *.json
+                    {expand: true, src: ['./bower.json'], dest: 'dist/',
+                      filter: 'isFile'}, //copy bower.json
                     {expand: true, src: ['./*.md'], dest: 'dist/',
                         filter: 'isFile'}, // copy *.md
                 ]
@@ -61,8 +50,7 @@ module.exports = function(grunt) {
         'jshint',
         'concat',
         'uglify',
-        'copy',
-        'compress'
+        'copy'
     ]);
 
     grunt.registerTask('default', [ 'build' ]);
