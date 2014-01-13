@@ -17,13 +17,13 @@ angular.module('angular-gestures', []);
  */
 var HGESTURES = {
     hmDoubleTap : 'doubletap',
-    hmDragStart : 'dragstart',
+    hmDragstart : 'dragstart',
     hmDrag : 'drag',
     hmDragUp : 'dragup',
     hmDragDown : 'dragdown',
     hmDragLeft : 'dragleft',
     hmDragRight : 'dragright',
-    hmDragEnd : 'dragend',
+    hmDragend : 'dragend',
     hmHold : 'hold',
     hmPinch : 'pinch',
     hmPinchIn : 'pinchin',
@@ -37,9 +37,9 @@ var HGESTURES = {
     hmSwipeRight : 'swiperight',
     hmTap : 'tap',
     hmTouch : 'touch',
-    hmTransformStart : 'transformstart',
+    hmTransformstart : 'transformstart',
     hmTransform : 'transform',
-    hmTransformEnd : 'transformend'
+    hmTransformend : 'transformend'
 };
 
 var VERBOSE = true;
