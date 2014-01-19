@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('angularGesturesDemoApp', ['angular-gestures'])
+angular.module('angularGesturesDemoApp', ['angular-gestures', 'ngRoute'])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
