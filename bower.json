@@ -2,7 +2,7 @@
   "name": "angular-gestures",
   "description": "AngularJS directive that adds support for multi touch gestures to your app. Based on hammer.js.",
   "version": "0.2.1",
-  "main": ["gestures.min.js", "gestures.min.js"],
+  "main": ["gestures.js"],
   "homepage": "http://github.com/wzr1337/angular-gestures",
   "repository": {
     "type": "git",
