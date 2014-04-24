@@ -1425,15 +1425,15 @@ angular.module('angular-gestures', []);
 
 /**
  * Inspired by AngularJS' implementation of "click dblclick mousedown..."
- * 
+ *
  * This ties in the Hammer 1.0.0 events to attributes like:
- * 
+ *
  * hm-tap="add_something()" hm-swipe="remove_something()"
- * 
+ *
  * and also has support for Hammer options with:
- * 
+ *
  * hm-tap-opts="{hold: false}"
- * 
+ *
  * or any other of the "hm-event" listed underneath.
  */
 var HGESTURES = {
@@ -1478,7 +1478,7 @@ angular.forEach(HGESTURES, function(eventName, directiveName) {
                         hammertime = new Hammer(element[0], opts);
                         handler = function(event) {
                             if (VERBOSE) {
-                                $log.log('angular-gestures: %s',
+                                $log.debug('angular-gestures: %s',
                                         eventName);
                             }
                             scope.$apply(function() {
