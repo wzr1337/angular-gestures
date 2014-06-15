@@ -1463,12 +1463,12 @@ var HGESTURES = {
     hmTransformend : 'transformend'
 };
 
-var VERBOSE = true;
+var VERBOSE = false;
 
 angular.forEach(HGESTURES, function(eventName, directiveName) {
     angular.module('angular-gestures').directive(
             directiveName,
-            ['$parse', '$log', function($parse, $log) {
+            ['$parse', '$log', '$timeout', function($parse, $log, $timeout) {
                 return function(scope, element, attr) {
                     var hammertime, handler;
                     attr.$observe(directiveName, function(value) {
@@ -1481,9 +1481,9 @@ angular.forEach(HGESTURES, function(eventName, directiveName) {
                                 $log.debug('angular-gestures: %s',
                                         eventName);
                             }
-                            scope.$apply(function() {
+                            $timeout(function() {
                                 fn(scope, { $event : event });
-                            });
+                            }, 0);
                         };
                         hammertime.on(eventName, handler);
                     });
