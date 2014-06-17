@@ -25,7 +25,37 @@ Refer to the [Hammer.js doco](https://github.com/EightMedia/hammer.js/wiki/Getti
 
 ## Supported events
 
+
+* hmDoubleTap : 'doubletap',
+* hmDragstart : 'dragstart',
+* hmDrag : 'drag',
+* hmDragUp : 'dragup',
+* hmDragDown : 'dragdown',
+* hmDragLeft : 'dragleft',
+* hmDragRight : 'dragright',
+* hmDragend : 'dragend',
+* hmHold : 'hold',
+* hmPinch : 'pinch',
+* hmPinchIn : 'pinchin',
+* hmPinchOut : 'pinchout',
+* hmRelease : 'release',
+* hmRotate : 'rotate',
+* hmSwipe : 'swipe',
+* hmSwipeUp : 'swipeup',
+* hmSwipeDown : 'swipedown',
+* hmSwipeLeft : 'swipeleft',
+* hmSwipeRight : 'swiperight',
+* hmTap : 'tap',
+* hmTouch : 'touch',
+* hmTransformstart : 'transformstart',
+* hmTransform : 'transform',
+* hmTransformend : 'transformend'
+
+
 All [Hammerjs events](https://github.com/EightMedia/hammer.js/wiki/Getting-Started) are supported. The corresponding Angularjs attribute has `hm-` prepended to the name. So for example, the 'doubletap' event becomes `hm-doubletap` etc.
+
+*Attention* : end and start events are NOT CamelCased because of issues that are cause by $animate interference.
+
 
 ## Bower
 If you want to use angular-momentum-scroll with bower, add the following dependency to your component.json
