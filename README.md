@@ -21,7 +21,7 @@ $scope.myDrag = function(event) {
 	console.log(event.gesture);
 }
 ```
-Refer to the [Hammer.js doco](https://github.com/EightMedia/hammer.js/wiki/Getting-Started) for more details on the properties of `event`.
+Refer to the [Hammer.js docs](https://github.com/EightMedia/hammer.js/wiki/Getting-Started) for more details on the properties of `event`.
 
 ## Supported events
 
@@ -52,7 +52,7 @@ Refer to the [Hammer.js doco](https://github.com/EightMedia/hammer.js/wiki/Getti
 * hmTransformend : 'transformend'
 
 
-All [Hammerjs events](https://github.com/EightMedia/hammer.js/wiki/Getting-Started) are supported. The corresponding Angularjs attribute has `hm-` prepended to the name. So for example, the 'doubletap' event becomes `hm-doubletap` etc.
+All [Hammerjs events](https://github.com/EightMedia/hammer.js/wiki/Getting-Started) are supported. The corresponding Angularjs attribute has `hm-` prepended to the name. So for example, the 'doubletap' event becomes `hm-double-tap` etc.
 
 *Attention* : end and start events are NOT CamelCased because of issues that are cause by $animate interference.
 
