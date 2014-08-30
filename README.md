@@ -1,12 +1,12 @@
 # angular-gestures
 
-AngularJS directive that adds support for multi touch gestures to your app. Based on hammer.js.
+AngularJS directive that adds support for multi touch gestures to your app, based on hammer.js.
 
 ## Usage
 
 * Include `gestures.js` or `gestures.min.js` into your page
 * Declare `'angular-gestures'` as a dependency for your angular app: `angular.module('myApp', ['angular-gestures']);`
-* Use attributes on you containers in the same way you use `ng-click` e.g. `hm-tap`
+* Use attributes on containers the same way you use `ng-click`: e.g. `hm-tap`
 ```HTML
 <button hm-tap="add_something()">Tap me</button>
 ```
@@ -54,7 +54,7 @@ Refer to the [Hammer.js docs](https://github.com/EightMedia/hammer.js/wiki/Getti
 
 All [Hammerjs events](https://github.com/EightMedia/hammer.js/wiki/Getting-Started) are supported. The corresponding Angularjs attribute has `hm-` prepended to the name. So for example, the 'doubletap' event becomes `hm-double-tap` etc.
 
-*Attention* : end and start events are NOT CamelCased because of issues that are cause by $animate interference.
+*Attention* : *end and *start events are NOT CamelCased because of issues caused by $animate interference.
 
 
 ## Bower
