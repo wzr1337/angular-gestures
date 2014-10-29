@@ -2,7 +2,8 @@
 
 module.exports = function(grunt) {
     // load all grunt tasks
-    require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+    require('load-grunt-tasks')(grunt);
+    require('time-grunt')(grunt);
 
     grunt.initConfig({
         concat : {
@@ -12,6 +13,12 @@ module.exports = function(grunt) {
                             'src/gestures.js' ]
                 }
             }
+        },
+        watch: {
+          js: {
+            files: ['src/{,*/}*.js'],
+            tasks: ['build']
+          }
         },
         clean : {
             dist : {
@@ -54,4 +61,5 @@ module.exports = function(grunt) {
     ]);
 
     grunt.registerTask('default', [ 'build' ]);
+    grunt.registerTask('watchme', [ 'watch' ]);
 };
