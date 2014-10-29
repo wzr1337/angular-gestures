@@ -24,10 +24,10 @@ var HGESTURES = {
     hmDragLeft : 'dragleft',
     hmDragRight : 'dragright',
     hmDragend : 'dragend',
-    hmHold : 'hold',
     hmPinch : 'pinch',
     hmPinchIn : 'pinchin',
     hmPinchOut : 'pinchout',
+    hmPress : 'press',
     hmRelease : 'release',
     hmRotate : 'rotate',
     hmSwipe : 'swipe',
@@ -42,7 +42,7 @@ var HGESTURES = {
     hmTransformend : 'transformend'
 };
 
-var VERBOSE = false;
+var VERBOSE = true;
 
 angular.forEach(HGESTURES, function(eventName, directiveName) {
     angular.module('angular-gestures').directive(
@@ -57,8 +57,8 @@ angular.forEach(HGESTURES, function(eventName, directiveName) {
                         hammertime = new Hammer(element[0], opts);
                         handler = function(event) {
                             if (VERBOSE) {
-                                $log.debug('angular-gestures: %s',
-                                        eventName);
+                                $log.debug('angular-gestures: ',
+                                        eventName, event);
                             }
                             $timeout(function() {
                                 fn(scope, { $event : event });
