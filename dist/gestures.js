@@ -2469,7 +2469,7 @@ angular.module('angular-gestures', []);
 /**
  * Inspired by AngularJS' implementation of "click dblclick mousedown..."
  *
- * This ties in the Hammer 1.0.0 events to attributes like:
+ * This ties in the Hammer 2 events to attributes like:
  *
  * hm-tap="add_something()" hm-swipe="remove_something()"
  *
@@ -2488,6 +2488,7 @@ var HGESTURES = {
     hmDragLeft : 'dragleft',
     hmDragRight : 'dragright',
     hmDragend : 'dragend',
+    hmHold : 'press',
     hmPinch : 'pinch',
     hmPinchIn : 'pinchin',
     hmPinchOut : 'pinchout',
