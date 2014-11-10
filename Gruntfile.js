@@ -66,7 +66,7 @@ module.exports = function(grunt) {
     'concat',
     'uglify',
     'copy'
-    ]);
+  ]);
 
   grunt.registerTask('default', [ 'build' ]);
   grunt.registerTask('watchme', [ 'watch' ]);
