@@ -45,12 +45,6 @@ module.exports = function(grunt) {
         files: [
           {
             expand: true,
-            src: ['./bower.json'],
-            dest: 'dist/',
-            filter: 'isFile'
-          }, //copy bower.json
-          {
-            expand: true,
             src: ['./*.md'],
             dest: 'dist/',
             filter: 'isFile'
@@ -65,9 +59,21 @@ module.exports = function(grunt) {
     'jshint',
     'concat',
     'uglify',
-    'copy'
+    'copy',
+    'bowerdist'
   ]);
 
   grunt.registerTask('default', [ 'build' ]);
   grunt.registerTask('watchme', [ 'watch' ]);
+
+  grunt.registerTask('bowerdist', function () {
+    var bower = require('./bower.json');
+    var fs = require('fs');
+
+    bower.main = bower.main.map(function (main) {
+      return main.replace('dist/', '');
+    });
+
+    fs.writeFileSync('./dist/bower.json', JSON.stringify(bower, null, 2));
+  });
 };
