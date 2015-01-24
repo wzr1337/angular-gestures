@@ -20,5 +20,6 @@
   "smarttabs": true,
   "globals": {
     "angular": false
+    "Hammer" : false
   }
 }

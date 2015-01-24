@@ -6,5 +6,5 @@ angular.module('angularGesturesDemoApp')
     $scope.handleGesture = function($event) {
       console.log($event.type)
       $scope.type = $event.type;
-    }
+    };
   });
