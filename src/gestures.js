@@ -17,13 +17,20 @@ angular.module('angular-gestures', []);
  */
 var HGESTURES = {
     hmDoubleTap: 'doubletap',
-    hmDragstart: 'dragstart',
-    hmDrag: 'drag',
-    hmDragUp: 'dragup',
-    hmDragDown: 'dragdown',
-    hmDragLeft: 'dragleft',
-    hmDragRight: 'dragright',
-    hmDragend: 'dragend',
+    hmDragstart: 'panstart', // will bedeprecated soon, us Pan*
+    hmDrag: 'pan', // will bedeprecated soon, us Pan*
+    hmDragUp: 'panup', // will bedeprecated soon, us Pan*
+    hmDragDown: 'pandown', // will bedeprecated soon, us Pan*
+    hmDragLeft: 'panleft', // will bedeprecated soon, us Pan*
+    hmDragRight: 'panright', // will bedeprecated soon, us Pan*
+    hmDragend: 'panend', // will bedeprecated soon, us Pan*
+    hmPanstart: 'panstart',
+    hmPan: 'pan',
+    hmPanUp: 'panup',
+    hmPanDown: 'pandown',
+    hmPanLeft: 'panleft',
+    hmPanRight: 'panright',
+    hmPanend: 'panend',
     hmHold: 'press',
     hmPinch: 'pinch',
     hmPinchIn: 'pinchin',
@@ -50,26 +57,23 @@ angular.forEach(HGESTURES, function(eventName, directiveName) {
         return function(scope, element, attr) {
             var hammertime, handler;
             attr.$observe(directiveName, function(value) {
-                var fn = $parse(value);
+                var callback = $parse(value);
                 var opts = $parse(attr[directiveName + 'Opts'])(scope, {});
                 var defaultOpts = angular.copy(hammerDefaultOpts);
 
                 angular.extend(defaultOpts, opts);
                 hammertime = new Hammer(element[0], defaultOpts);
                 handler = function(event) {
-                    if (VERBOSE) {
-                      $log.debug('angular-gestures: ', eventName, event);
-                    }
-                    $timeout(function() {
-                        fn(scope, {
-                            $event: event
-                          });
-                      }, 0);
-                  };
+                  if (VERBOSE) {
+                    $log.debug('angular-gestures: ', eventName, event);
+                  }
+                  callback(scope, { $event: event});
+                  $timeout(function() {},0);
+                };
                 hammertime.on(eventName, handler);
               });
             scope.$on('$destroy', function() {
-                hammertime.off(eventName, handler);
+                hammertime.off(eventName);
               });
           };
       }]);

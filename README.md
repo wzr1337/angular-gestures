@@ -56,6 +56,25 @@ All [Hammerjs events](https://github.com/EightMedia/hammer.js/wiki/Getting-Start
 
 *Attention* : *end and *start events are NOT CamelCased because of issues caused by $animate interference.
 
+## Default options
+To set recognizer default options you can use `hammerDefaultOptsProvider`. Access it like in the demo:
+
+```
+angular.module('angularGesturesDemoApp', ['angular-gestures', 'ngRoute'])
+  .config(function ($routeProvider, hammerDefaultOptsProvider) {
+    $routeProvider
+      .when('/', {
+        templateUrl: 'views/main.html',
+        controller: 'MainCtrl'
+      })
+      .otherwise({
+        redirectTo: '/'
+      });
+    hammerDefaultOptsProvider.set({
+        recognizers: [[Hammer.Tap, {time: 250}]]
+    });
+  });
+```
 
 ## Bower
 If you want to use angular-momentum-scroll with bower, add the following dependency to your component.json
