@@ -55,25 +55,43 @@ var VERBOSE = true;
 angular.forEach(HGESTURES, function(eventName, directiveName) {
     angular.module('angular-gestures').directive(directiveName, ['$parse', '$log', '$timeout', 'hammerDefaultOpts', function($parse, $log, $timeout, hammerDefaultOpts) {
         return function(scope, element, attr) {
-            var hammertime, handler;
+            var handler;
             attr.$observe(directiveName, function(value) {
                 var callback = $parse(value);
                 var opts = $parse(attr[directiveName + 'Opts'])(scope, {});
                 var defaultOpts = angular.copy(hammerDefaultOpts);
 
                 angular.extend(defaultOpts, opts);
-                hammertime = new Hammer(element[0], defaultOpts);
+
+                if (angular.isUndefined(element.hammertime)) {
+                  element.hammer = new Hammer.Manager(element[0], defaultOpts);
+                  scope.$on('$destroy', function() {
+                    element.hammer.off(eventName);
+                    element.hammer.destroy();
+                  });
+                }
+
                 handler = function(event) {
                   if (VERBOSE) {
                     $log.debug('angular-gestures: ', eventName, event);
                   }
-                  callback(scope, { $event: event});
-                  $timeout(function() {},0);
+                  var callbackHandler = function () {
+                    var cb = callback(scope, { $event : event});
+                    if (typeof cb === 'function') {
+                      cb.call(scope, event);
+                    }
+                  };
+
+                  if (scope.$root.$$phase === '$apply' ||
+                    scope.$root.$$phase === '$digest') {
+                    callbackHandler();
+                  } else {
+                    scope.$apply(callbackHandler);
+                  }
+
                 };
-                hammertime.on(eventName, handler);
-              });
-            scope.$on('$destroy', function() {
-                hammertime.off(eventName);
+                // register actual event
+                element.hammer.on(eventName, handler);
               });
           };
       }]);
