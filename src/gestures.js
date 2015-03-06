@@ -50,7 +50,7 @@ var HGESTURES = {
     hmTransformend: 'transformend'
   };
 
-var VERBOSE = true;
+var VERBOSE = false;
 
 angular.forEach(HGESTURES, function(eventName, directiveName) {
     angular.module('angular-gestures').directive(directiveName, ['$parse', '$log', '$timeout', 'hammerDefaultOpts', function($parse, $log, $timeout, hammerDefaultOpts) {
