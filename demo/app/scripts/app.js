@@ -12,12 +12,9 @@ angular.module('angularGesturesDemoApp', ['angular-gestures', 'ngRoute'])
       });
     hammerDefaultOptsProvider.set({
         recognizers: [
-          [Hammer.Tap, {time: 250}],
+          [Hammer.Tap],
           [Hammer.Press],
-          [Hammer.Pinch],
-          [Hammer.Pan],
-          [Hammer.Rotate],
-          [Hammer.Swipe]
+          [Hammer.Pan]
         ]
     });
   });
