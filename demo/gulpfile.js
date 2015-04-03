@@ -2,15 +2,13 @@
 
 var gulp = require('gulp');
 var jshint = require('gulp-jshint');
-var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var rev = require('gulp-rev');
 var usemin = require('gulp-usemin');
-var rename = require('gulp-rename');
 var path = require('path');
 var rimraf = require('gulp-rimraf');
 var ngAnnotate = require('gulp-ng-annotate');
-
+var server = require('gulp-webserver');
 
 var bases = {
  app: 'app/',
@@ -57,3 +55,12 @@ gulp.task('watch', function() {
 });
 
 gulp.task('default', ['clean', 'usemin', 'copy']);
+
+gulp.task('serve', function() {
+  gulp.src('./')
+    .pipe(server({
+      livereload: true,
+      directoryListing: true,
+      open: true
+    }));
+});
