@@ -12,7 +12,8 @@ angular.module('angularGesturesDemoApp', ['angular-gestures', 'ngRoute'])
       });
     hammerDefaultOptsProvider.set({
         recognizers: [
-          [Hammer.Tap],
+          [Hammer.Tap,{ event: 'tap'}],
+          [Hammer.Tap, { event: 'doubletap', taps: 2 }, [], ['tap']],
           [Hammer.Press],
           [Hammer.Pan]
         ]
