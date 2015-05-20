@@ -50,6 +50,36 @@ var HGESTURES = {
     hmTransformend: 'transformend'
   };
 
+var HRECOGNIZERS = {
+    hmDoubleTap: [Hammer.Tap, 'Hammer.Tap'],
+    hmDragstart: [Hammer.Pan, 'Hammer.Pan'],
+    hmDrag: [Hammer.Pan, 'Hammer.Pan'],
+    hmDragUp: [Hammer.Pan, 'Hammer.Pan'],
+    hmDragDown: [Hammer.Pan, 'Hammer.Pan'],
+    hmDragLeft: [Hammer.Pan, 'Hammer.Pan'],
+    hmDragRight: [Hammer.Pan, 'Hammer.Pan'],
+    hmDragend: [Hammer.Pan, 'Hammer.Pan'],
+    hmPanstart: [Hammer.Pan, 'Hammer.Pan'],
+    hmPan: [Hammer.Pan, 'Hammer.Pan'],
+    hmPanUp: [Hammer.Pan, 'Hammer.Pan'],
+    hmPanDown: [Hammer.Pan, 'Hammer.Pan'],
+    hmPanLeft: [Hammer.Pan, 'Hammer.Pan'],
+    hmPanRight: [Hammer.Pan, 'Hammer.Pan'],
+    hmPanend: [Hammer.Pan, 'Hammer.Pan'],
+    hmHold: [Hammer.Press, 'Hammer.Press'],
+    hmPinch: [Hammer.Pinch, 'Hammer.Pinch'],
+    hmPinchIn: [Hammer.Pinch, 'Hammer.Pinch'],
+    hmPinchOut: [Hammer.Pinch, 'Hammer.Pinch'],
+    hmPress: [Hammer.Press, 'Hammer.Press'],
+    hmRotate: [Hammer.Rotate, 'Hammer.Rotate'],
+    hmSwipe: [Hammer.Swipe, 'Hammer.Swipe'],
+    hmSwipeUp: [Hammer.Swipe, 'Hammer.Swipe'],
+    hmSwipeDown: [Hammer.Swipe, 'Hammer.Swipe'],
+    hmSwipeLeft: [Hammer.Swipe, 'Hammer.Swipe'],
+    hmSwipeRight: [Hammer.Swipe, 'Hammer.Swipe'],
+    hmTap: [Hammer.Tap, 'Hammer.Tap']
+  };
+
 var VERBOSE = false;
 
 angular.forEach(HGESTURES, function(eventName, directiveName) {
@@ -64,6 +94,24 @@ angular.forEach(HGESTURES, function(eventName, directiveName) {
                 angular.extend(defaultOpts, opts);
 
                 if (angular.isUndefined(element.hammertime)) {
+
+                  // validate that needed recognizer is enabled
+                  var recognizers = angular.isDefined(defaultOpts.recognizers) ? defaultOpts.recognizers : [];
+                  var recognizer = HRECOGNIZERS[directiveName];
+                  if(angular.isDefined(recognizer)) {
+                    var enabled = false;
+                    angular.forEach(recognizers, function(r) {
+                      if (recognizer[0] === r[0]) {
+                        if (angular.isUndefined(r[1].enable) || r[1].enable === true) {
+                          enabled = true;  
+                        }
+                      }
+                    });
+                    if (!enabled) {
+                      throw new Error('Directive ' + directiveName + ' requires gesture recognizer [' + recognizer[1] + '] to be enabled');
+                    }
+                  }
+
                   element.hammer = new Hammer.Manager(element[0], defaultOpts);
                   scope.$on('$destroy', function() {
                     element.hammer.off(eventName);
