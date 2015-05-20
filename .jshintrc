@@ -21,6 +21,12 @@
   "smarttabs": true,
   "globals": {
     "angular": false,
-    "Hammer": false
+    "Hammer": false,
+    // testing
+    "it": false,
+    "beforeEach": false,
+    "describe": false,
+    "expect": false,
+    "inject": false
   }
 }
