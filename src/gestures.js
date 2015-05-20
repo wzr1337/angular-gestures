@@ -101,15 +101,14 @@ angular.forEach(HGESTURES, function(eventName, directiveName) {
                   if(angular.isDefined(recognizer)) {
                     var enabled = false;
                     angular.forEach(recognizers, function(r) {
-                      if (recognizer[0] == r[0]) {
-                        if (angular.isUndefined(r[1].enable) || r[1].enable == true) {
+                      if (recognizer[0] === r[0]) {
+                        if (angular.isUndefined(r[1].enable) || r[1].enable === true) {
                           enabled = true;  
                         }
                       }
                     });
                     if (!enabled) {
-                      throw new Error("Directive " + directiveName + " requires gesture recognizer [" 
-                        + recognizer[1] + "] to be enabled");
+                      throw new Error('Directive ' + directiveName + ' requires gesture recognizer [' + recognizer[1] + '] to be enabled');
                     }
                   }
 
