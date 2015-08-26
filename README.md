@@ -80,3 +80,8 @@ angular.module('angularGesturesDemoApp', ['angular-gestures', 'ngRoute'])
 If you want to use angular-momentum-scroll with bower, add the following dependency to your component.json
 
 `"angular-gestures": "latest"`
+
+## Require.js/AMD/Node.js
+angular-gestures has support for Require.js/AMD/Node.js. When using AMD modules, make sure that you define
+hammer.js using `Hammer`, same goes for `node.js`. If you are not using Require.js/AMD/Node.js, angular-gestures
+will fall back to using the global `Hammer`/`angular` objects.
