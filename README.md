@@ -6,6 +6,7 @@ AngularJS directive that adds support for multi touch gestures to your app, base
 
 * Include `gestures.js` or `gestures.min.js` into your page
 * Declare `'angular-gestures'` as a dependency for your angular app: `angular.module('myApp', ['angular-gestures']);`
+* Config the **recognizers** before you use the directive like this: `hammerDefaultOptsProvider.set({recognizers: [[Hammer.Tap, {time: 250}]] });`
 * Use attributes on containers the same way you use `ng-click`: e.g. `hm-tap`
 ```HTML
 <button hm-tap="add_something()">Tap me</button>
