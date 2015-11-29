@@ -14,6 +14,8 @@ AngularJS directive that adds support for multi touch gestures to your app, base
 * You can use angular interpolations like this : `hm-swipe="remove_something({{ id }})"`
 * You can also use Hammer.js options by e.g. `hm-tap-opts="{hold: false}"`
 
+Note that [hammer.js](http://hammerjs.github.io/) is an additional requirement and is not included in `angular-gestures`.
+
 ### Event data
 
 Pass the `$event` object in the usual way e.g. `hm-drag="myDrag($event)"` then access its internals like so:
