@@ -6,12 +6,15 @@ AngularJS directive that adds support for multi touch gestures to your app, base
 
 * Include `gestures.js` or `gestures.min.js` into your page
 * Declare `'angular-gestures'` as a dependency for your angular app: `angular.module('myApp', ['angular-gestures']);`
+* Config the **recognizers** before you use the directive like this: `hammerDefaultOptsProvider.set({recognizers: [[Hammer.Tap, {time: 250}]] });`
 * Use attributes on containers the same way you use `ng-click`: e.g. `hm-tap`
 ```HTML
 <button hm-tap="add_something()">Tap me</button>
 ```
 * You can use angular interpolations like this : `hm-swipe="remove_something({{ id }})"`
 * You can also use Hammer.js options by e.g. `hm-tap-opts="{hold: false}"`
+
+Note that [hammer.js](http://hammerjs.github.io/) is an additional requirement and is not included in `angular-gestures`.
 
 ### Event data
 
@@ -80,3 +83,8 @@ angular.module('angularGesturesDemoApp', ['angular-gestures', 'ngRoute'])
 If you want to use angular-momentum-scroll with bower, add the following dependency to your component.json
 
 `"angular-gestures": "latest"`
+
+## Require.js/AMD/Node.js
+angular-gestures has support for Require.js/AMD/Node.js. When using AMD modules, make sure that you define
+hammer.js using `Hammer`, same goes for `node.js`. If you are not using Require.js/AMD/Node.js, angular-gestures
+will fall back to using the global `Hammer`/`angular` objects.
