@@ -33,13 +33,13 @@
 
   var HGESTURES = {
     hmDoubleTap: 'doubletap',
-    hmDragstart: 'panstart', // will bedeprecated soon, us Pan*
-    hmDrag: 'pan', // will bedeprecated soon, us Pan*
-    hmDragUp: 'panup', // will bedeprecated soon, us Pan*
-    hmDragDown: 'pandown', // will bedeprecated soon, us Pan*
-    hmDragLeft: 'panleft', // will bedeprecated soon, us Pan*
-    hmDragRight: 'panright', // will bedeprecated soon, us Pan*
-    hmDragend: 'panend', // will bedeprecated soon, us Pan*
+    hmDragstart: 'panstart', // will be deprecated soon, use Pan*
+    hmDrag: 'pan', // will be deprecated soon, use Pan*
+    hmDragUp: 'panup', // will be deprecated soon, use Pan*
+    hmDragDown: 'pandown', // will be deprecated soon, use Pan*
+    hmDragLeft: 'panleft', // will be deprecated soon, use Pan*
+    hmDragRight: 'panright', // will be deprecated soon, use Pan*
+    hmDragend: 'panend', // will be deprecated soon, use Pan*
     hmPanstart: 'panstart',
     hmPan: 'pan',
     hmPanUp: 'panup',
